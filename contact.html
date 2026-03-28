@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - SGS</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content reveal" style="transition-delay: 0.1s">
+    <h1>Get in Touch</h1>
+    <p>
+      Have questions about your SAP systems? Need expert consulting,
+      skilled talent, or support for your ongoing projects? We’re here to
+      help you streamline operations, scale efficiently, and achieve your
+      business goals.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-main">
+    <div class="contact-wrapper">
+
+  <!-- FORM -->
+  <form id="contact-form" class="form reveal" style="transition-delay: 0.2s">
+
+    <div class="row">
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Type your email address" required>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Phone Number</label>
+      <input type="text" name="phone" placeholder="xxx-xxx-xxxx">
+    </div>
+
+    <div class="input-group">
+      <label>Message</label>
+      <textarea name="message" placeholder="Type your message here" required></textarea>
+    </div>
+
+    <button type="submit" class="btn">SEND MESSAGE</button>
+
+  </form>
+
+  <!-- INFO -->
+  <div class="info">
+  <h2 class="reveal" style="transition-delay: 0.3s">Contact<br>Information</h2>
+
+  <p class="reveal" style="transition-delay: 0.4s">
+    At Shivom Global Solutions, we are committed to helping businesses grow
+    with the right technology and the right talent. Whether you need SAP
+    consulting, digital transformation support, or flexible staffing solutions,
+    our team is ready to assist you. Reach out to us and let’s create impactful,
+    scalable solutions together.
+  </p>
+
+  <!-- DIVIDER -->
+  <div class="divider reveal" style="transition-delay: 0.5s"></div>
+
+  <!-- CONTACT DETAILS -->
+  <div class="details reveal" style="transition-delay: 0.6s">
+    <div class="detail-item">
+      <span class="icon">📞</span>
+      <span>(+91) 93635-12007</span>
+    </div>
+
+    <div class="detail-item">
+      <span class="icon">✉</span>
+      <span>support@shivomglobalsolutions.com</span>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- EMAILJS -->
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("6rtoEatu9SAgYVOyV"); // 🔥 replace
+})();
+
+document.getElementById("contact-form") /* 🔥 FIX THIS ID */
+  .addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_9i4jfjj",
+      "template_89155sg",
+      this
+    )
+    .then(function() {
+  alert("Message sent successfully!");
+
+  document.getElementById("contact-form").reset();
+
+  // 🔥 redirect after 1.5 sec
+  setTimeout(function() {
+    window.location.href = "index.html";
+  }, 1000);
+
+      document.getElementById("contact-form").reset();
+    }, function(error) {
+      alert("Failed to send. Try again.");
+      console.log(error);
+    });
+});
+</script>
+
+<!-- SCROLL ANIMATION -->
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
